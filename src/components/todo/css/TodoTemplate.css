@@ -11,4 +11,6 @@
 
     /* 박스 x축 중앙 정렬 : 마진 좌우값을 auto로 설정 */
     margin: 100px auto;
+
+    position: relative;
 }
