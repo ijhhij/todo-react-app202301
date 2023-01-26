@@ -5,7 +5,8 @@ import {AppBar, Toolbar, Grid,
 const Header = () => {
   return (
     <AppBar position="fixed" style={{
-        background: '#38d9a9'
+        background: '#38d9a9',
+        width: '100%'
     }}>
         <Toolbar>
             <Grid justify="space-between" container>

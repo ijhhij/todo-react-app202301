@@ -17,3 +17,19 @@
     display: flex;
     flex-direction: column;
 }
+
+/* 로딩중 style */
+.loading {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+}
+.loading .spinner-border {
+    width: 200px;
+    height: 200px;
+    --bs-spinner-border-width: 1.5rem;
+}
+.loading .text-danger {
+    color: rgba(13, 245, 245, 0.767) !important;
+}
