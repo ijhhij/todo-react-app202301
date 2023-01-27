@@ -7,7 +7,7 @@ import { BASE_URL, USER } from '../../config/host-config';
 const Join = () => {
 
     const API_BASE_URL = BASE_URL + USER;
-    
+
    // 검증 메시지 저장 
    const [message, setMessage] = useState({
       username: '',
@@ -122,6 +122,14 @@ const Join = () => {
   // 비밀번호 입력란 검증 체인지 이벤트 핸들러
   const passwordHandler = e => {
 
+    // 패스워드 확인란을 비워버리기
+    document.getElementById('password-check').value = '';
+    document.getElementById('check-text').textContent = '';
+    setValidate({
+        ...validate,
+        passwordCheck: false
+    });
+    
     const pwRegex =  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
 
     // 검증 시작
@@ -158,6 +166,8 @@ const Join = () => {
   // 비밀번호확인 입력란 검증 체인지 이벤트 핸들러
   const passwordCheckHandler = e => {
 
+    console.log('pwcheck event!');
+
     // 검증 시작
     let msg;
     if (!e.target.value) { // 패스워드 안적은거
@@ -192,6 +202,7 @@ const Join = () => {
     // 객체에서 key값만 뽑아줌 'username'
     for (let key in validate) {
         let value = validate[key];
+        console.log(key + ': ' +value);
         if (!value) return false;
     }
     return true;
@@ -216,6 +227,7 @@ const Join = () => {
             if (res.status === 200) {
                 alert('회원가입을 축하합니다.');
                 // 로그인페이지로 리다이렉트
+                window.location.href = '/login';
             } else {
                 alert('회원가입에 실패했습니다. 잠시 후 다시 시도하세요.');
             }
@@ -300,8 +312,9 @@ const Join = () => {
                         id="password-check"
                         autoComplete="check-password"
                         onChange={passwordCheckHandler}
+                    
                     />
-                    <span style={
+                    <span id="check-text" style={
                         validate.passwordCheck
                         ? {color: 'green'}
                         : {color: 'red'}
