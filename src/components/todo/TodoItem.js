@@ -45,9 +45,9 @@ const TodoItem = ({ todo, remove, update}) => {
       alert('완료된 할 일은 수정할 수 없어요!');
       return;
     }
-    if (!updateFlag) {
+    if (!updateFlag) { // 현재 수정모드 진입상태가 아니면
       setUpdateFlag(true);
-    } else {
+    } else { // 현재 수정모드 진입상태가 맞으면
       const modTodo = {
         ...todo,
         title: titleValue
