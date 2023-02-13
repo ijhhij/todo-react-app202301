@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {AppBar, Toolbar, Grid, 
     Typography} from "@mui/material";
 import { Link } from 'react-router-dom';
 import './Header.css';
-
+import { BASE_URL, TODO } from '../../config/host-config.js';
 import { isLogin, getUsername } from '../util/login-util';
 
 const Header = () => {
 
+  const API_BASE_URL = BASE_URL + TODO;
+  // /api/todos
   const logoutHandler = e => {
     localStorage.removeItem('ACCESS_TOKEN');
     localStorage.removeItem('LOGIN_USERNAME');
     window.location.href = '/login';
   };
+
 
   return (
     <AppBar position="fixed" style={{
@@ -33,7 +36,7 @@ const Header = () => {
                                 ? `${getUsername()}님` 
                                 : '오늘'}
                                 의 할일
-                        </Typography>   
+                        </Typography>
                     </div>
                 </Grid>
 

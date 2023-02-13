@@ -7,6 +7,7 @@ import { BASE_URL, USER } from '../../config/host-config';
 const Join = () => {
 
     const API_BASE_URL = BASE_URL + USER;
+ 
 
    // 검증 메시지 저장 
    const [message, setMessage] = useState({
@@ -35,7 +36,8 @@ const Join = () => {
   const nameHandler = e => {
     // console.log(e.target.value);
 
-    const nameRegex = /^[가-힣]{2,5}$/;
+    const nameRegex = /^[a-z]{2,5}$/;
+    //const nameRegex = /^[가-힣]{2,5}$/;
 
     // 검증 시작
     let msg;
@@ -214,7 +216,6 @@ const Join = () => {
 
      // 입력값 검증을 올바르게 수행했는지 검사
      if (isValid()) {
-        // alert('회원가입 이제 보낼게~~');
 
         fetch(`${API_BASE_URL}/signup`, {
             method: 'POST',

@@ -1,10 +1,11 @@
 import React from 'react';
 import './css/TodoHeader.css';
 
+
 const TodoHeader = ({ todoList }) => {
 
   // todoList에서 done값이 false인 객체들만 필터링
-  const undoneTodos = todoList.filter(todo => !todo.done);
+  const undoneTodos = todoList&&todoList.filter(todo => !todo.done);
 
   const today = new Date();
   const dateString = today.toLocaleDateString('ko-KR', {

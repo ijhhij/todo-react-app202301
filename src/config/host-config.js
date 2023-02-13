@@ -13,3 +13,4 @@ if (hostname === 'localhost') {
 export const BASE_URL = backendHost;
 export const TODO = '/api/todos';
 export const USER = '/api/auth';
+//export const LOG = '/api/logs';

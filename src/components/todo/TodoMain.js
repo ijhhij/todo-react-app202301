@@ -7,7 +7,8 @@ const TodoMain = ({ todoList, remove, update }) => {
   return (
     <ul className="todo-list">
         {
-            todoList.map(todo => 
+          //
+            todoList&&todoList.map(todo => 
             <TodoItem 
                 key={todo.id} 
                 todo={todo} 
@@ -20,3 +21,5 @@ const TodoMain = ({ todoList, remove, update }) => {
 };
 
 export default TodoMain;
+
+

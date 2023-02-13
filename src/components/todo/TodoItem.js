@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { MdDone, MdDelete, MdUpdate, MdCheck } from 'react-icons/md';
 import './css/TodoItem.css';
 import cn from 'classnames';
+import LogInput from '../log/LogInput';
+import Modal from '../Modal/modal';
+import LogTemplate from '../log/LogTemplate';
+
 
 const TodoItem = ({ todo, remove, update}) => {
 
@@ -13,6 +17,7 @@ const TodoItem = ({ todo, remove, update}) => {
   const [checkFlag, setCheckFlag] = useState(done);
   // 수정시 제목변경처리를 위해 제목을 상태변수로 관리한다.
   const [titleValue, setTitleValue] = useState(title);
+
 
   // 서버에 삭제요청 클릭 이벤트핸들러
   const deleteClickHandler = e => {
@@ -59,7 +64,15 @@ const TodoItem = ({ todo, remove, update}) => {
     }
   };
 
-  
+  //모달
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <li className="todo-item">
@@ -69,6 +82,13 @@ const TodoItem = ({ todo, remove, update}) => {
         >
             {done && <MdDone />}
         </div>
+        <React.Fragment>
+          <button onClick={openModal}>모달팝업</button>
+
+          <Modal open={modalOpen} close={closeModal} header="Modal heading">            
+              <LogTemplate />
+          </Modal>
+        </React.Fragment>
         {updateFlag 
         ? <input 
               className='text' 
@@ -87,5 +107,6 @@ const TodoItem = ({ todo, remove, update}) => {
     </li>
   );
 };
+// todo의 박스 만들어서 클릭할 수 있게 하기
 
 export default TodoItem;

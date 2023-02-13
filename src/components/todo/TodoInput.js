@@ -3,6 +3,7 @@ import { MdAdd } from 'react-icons/md';
 import cn from 'classnames';
 import './css/TodoInput.css';
 
+
 const TodoInput = ({ add }) => {
   
   // todo-input 박스를 렌더링할지 여부
@@ -20,7 +21,6 @@ const TodoInput = ({ add }) => {
   // 할 일 입력 후 엔터치면 서버로 POST요청을 보내는 이벤트 핸들러
   const todoAddHandler = e => {
     if (e.key === 'Enter') {
-        // console.log('엔터키 잘누르네?');
 
         // 입력데이터들을 읽기
         console.log(todo);
@@ -45,12 +45,6 @@ const TodoInput = ({ add }) => {
      });
   };
 
-//   const blahblahHandler = e => {
-//     setTodo({
-//         ...todo,
-//         text: e.target.value
-//      });
-//   };
 
   const stopSubmit = e => e.preventDefault(); // 자동 서브밋 중지
 
@@ -67,11 +61,6 @@ const TodoInput = ({ add }) => {
                         onChange={titleChangeHandler}
                         value={todo.title}
                     /> 
-                    {/* <input 
-                        type="text"
-                        placeholder='아무말이나써봐'
-                        onChange={blahblahHandler}
-                    /> */}
                 </form>
             </div>
         }

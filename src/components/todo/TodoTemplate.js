@@ -42,6 +42,8 @@ const TodoTemplate = () => {
   };
 
   // 할 일 삭제 요청 처리
+  
+  // + editable 을 통한 삭제 권한 추가
   const deleteTodo = (id) => {
 
     fetch(`${API_BASE_URL}/${id}`, {
@@ -55,6 +57,8 @@ const TodoTemplate = () => {
   };
 
   // 할 일 수정 요청 처리
+
+  // + editable 을 통한 삭제 권한 추가
   const updateTodo = todo => {
 
     fetch(`${API_BASE_URL}/${todo.id}`, {
@@ -116,6 +120,7 @@ const TodoTemplate = () => {
             remove={deleteTodo} 
             update={updateTodo} 
         />
+
         <TodoInput add={addTodo} /> 
     </div>
   );
